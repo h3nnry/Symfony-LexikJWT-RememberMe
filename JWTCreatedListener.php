@@ -23,7 +23,7 @@ class JWTCreatedListener implements EventSubscriberInterface
     {
         $this->requestStack = $requestStack;
     }
-    
+
     /**
      * @return array
      */
@@ -42,7 +42,7 @@ class JWTCreatedListener implements EventSubscriberInterface
     {
         $request = $this->requestStack->getCurrentRequest();
 
-        if ($request->getContentType() === 'json') {
+        if ($request->getContentTypeFormat() === 'json') {
             $data = json_decode($request->getContent(), true);
 
             if (!empty($data['_remember_me'])) {
